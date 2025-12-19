@@ -1,0 +1,45 @@
+<h2>Employees</h2>
+
+<section class="employee-form">
+  <h3>Add Employee</h3>
+  <div class="form-row">
+    <label>Name</label>
+    <input type="text" [(ngModel)]="newEmployee.name" name="name" placeholder="Full name" />
+  </div>
+  <div class="form-row">
+    <label>Role</label>
+    <input type="text" [(ngModel)]="newEmployee.role" name="role" placeholder="Role" />
+  </div>
+  <div class="form-row">
+    <label>Email</label>
+    <input type="email" [(ngModel)]="newEmployee.email" name="email" placeholder="email@example.com" />
+  </div>
+  <div class="form-actions">
+    <button (click)="addEmployee()">Add</button>
+    <button (click)="clearForm()" type="button">Clear</button>
+  </div>
+</section>
+
+<table class="employee-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of employees" (click)="select(e)" [class.selected]="selected?.id === e.id">
+      <td>{{ e.name }}</td>
+      <td>{{ e.role }}</td>
+      <td>{{ e.email }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="selected" class="detail">
+  <h3>Details</h3>
+  <p><strong>Name:</strong> {{ selected.name }}</p>
+  <p><strong>Role:</strong> {{ selected.role }}</p>
+  <p><strong>Email:</strong> {{ selected.email }}</p>
+</div>

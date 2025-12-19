@@ -1,0 +1,52 @@
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.employee-table th,
+.employee-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.employee-table tr:hover {
+  background: #f5f5f5;
+  cursor: pointer;
+}
+.employee-table tr.selected {
+  background: #e0f7fa;
+}
+.detail {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #eee;
+  background: #fafafa;
+}
+
+.employee-form {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px dashed #ddd;
+  background: #fff;
+}
+.form-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.form-row label {
+  width: 80px;
+}
+.form-row input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.form-actions button {
+  padding: 6px 10px;
+}
