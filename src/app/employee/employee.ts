@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 interface Employee {
   id: number;
@@ -12,7 +11,7 @@ interface Employee {
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './employee.html',
   styleUrls: ['./employee.css']
 })

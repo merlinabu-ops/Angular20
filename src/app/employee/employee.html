@@ -1,26 +1,30 @@
-<h2>Employees</h2>
+<div class="employee-container">
+  <header class="employee-header">
+    <h2>Employees</h2>
+    <div class="header-meta">Total: <strong>{{ employees.length }}</strong></div>
+  </header>
 
-<section class="employee-form">
+  <section class="employee-form">
   <h3>Add Employee</h3>
   <div class="form-row">
     <label>Name</label>
-    <input type="text" [(ngModel)]="newEmployee.name" name="name" placeholder="Full name" />
+    <input type="text" [value]="newEmployee.name || ''" (input)="newEmployee.name = $any($event.target).value" name="name" placeholder="Full name" />
   </div>
   <div class="form-row">
     <label>Role</label>
-    <input type="text" [(ngModel)]="newEmployee.role" name="role" placeholder="Role" />
+    <input type="text" [value]="newEmployee.role || ''" (input)="newEmployee.role = $any($event.target).value" name="role" placeholder="Role" />
   </div>
   <div class="form-row">
     <label>Email</label>
-    <input type="email" [(ngModel)]="newEmployee.email" name="email" placeholder="email@example.com" />
+    <input type="email" [value]="newEmployee.email || ''" (input)="newEmployee.email = $any($event.target).value" name="email" placeholder="email@example.com" />
   </div>
   <div class="form-actions">
-    <button (click)="addEmployee()">Add</button>
-    <button (click)="clearForm()" type="button">Clear</button>
+    <button class="btn btn-primary" (click)="addEmployee()">Add</button>
+    <button class="btn btn-secondary" (click)="clearForm()" type="button">Clear</button>
   </div>
 </section>
-
-<table class="employee-table">
+  <div class="employee-list">
+    <table class="employee-table">
   <thead>
     <tr>
       <th>Name</th>
@@ -30,12 +34,25 @@
   </thead>
   <tbody>
     <tr *ngFor="let e of employees" (click)="select(e)" [class.selected]="selected?.id === e.id">
-      <td>{{ e.name }}</td>
-      <td>{{ e.role }}</td>
-      <td>{{ e.email }}</td>
+      <td class="name">{{ e.name }}</td>
+      <td class="role"><span class="role-badge">{{ e.role }}</span></td>
+      <td class="email">{{ e.email }}</td>
     </tr>
   </tbody>
 </table>
+
+    <aside class="detail">
+      <div *ngIf="selected">
+        <h3>Details</h3>
+        <p><strong>Name:</strong> {{ selected.name }}</p>
+        <p><strong>Role:</strong> {{ selected.role }}</p>
+        <p><strong>Email:</strong> {{ selected.email }}</p>
+      </div>
+      <div *ngIf="!selected" class="empty">Select an employee to see details</div>
+    </aside>
+  </div>
+
+</div>
 
 <div *ngIf="selected" class="detail">
   <h3>Details</h3>
