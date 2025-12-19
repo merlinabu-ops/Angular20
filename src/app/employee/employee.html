@@ -33,9 +33,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let e of employees" (click)="select(e)" [class.selected]="selected?.id === e.id">
-      <td class="name">{{ e.name }}</td>
-      <td class="role"><span class="role-badge">{{ e.role }}</span></td>
+    <tr *ngFor="let e of employees" (click)="select(e)" [class.selected]="selected?.id === e.id" [style.--accent-color]="roleHex(e.role)">
+      <td class="name">
+        <div class="avatar" [style.background]="avatarGradient(e.role)">{{ e.name.charAt(0) }}</div>
+        <div class="name-label">{{ e.name }}</div>
+      </td>
+      <td class="role"><span class="role-badge" [ngClass]="roleClass(e.role)">{{ e.role }}</span></td>
       <td class="email">{{ e.email }}</td>
     </tr>
   </tbody>

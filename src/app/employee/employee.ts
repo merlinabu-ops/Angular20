@@ -31,6 +31,25 @@ export class EmployeeComponent {
     this.selected = e;
   }
 
+  roleClass(role: string) {
+    return 'role-' + (role || 'employee').toLowerCase().replace(/\s+/g, '-');
+  }
+
+  roleHex(role: string) {
+    const key = (role || '').toLowerCase();
+    if (key.includes('dev')) return '#7c3aed'; // purple
+    if (key.includes('design')) return '#ef4444'; // red
+    if (key.includes('product')) return '#0ea5a4'; // teal
+    if (key.includes('manager')) return '#f59e0b'; // amber
+    return '#06b6d4'; // cyan default
+  }
+
+  avatarGradient(role: string) {
+    const a = this.roleHex(role);
+    const b = '#ffffff00';
+    return `linear-gradient(135deg, ${a}, ${b})`;
+  }
+
   addEmployee() {
     if (!this.newEmployee.name || !this.newEmployee.email) {
       return;

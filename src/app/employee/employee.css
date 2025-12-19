@@ -29,6 +29,45 @@
   background: linear-gradient(90deg,#e6f7ff,#ffffff);
   box-shadow: inset 4px 0 0 var(--accent-color, #0ea5a4);
 }
+.employee-table tbody tr td.name { display:flex; align-items:center; gap:10px; }
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  color: #052f2f; font-weight:700; font-size:0.95rem;
+  box-shadow: 0 6px 14px rgba(2,6,23,0.06);
+  border: 2px solid rgba(255,255,255,0.6);
+}
+.name-label { font-weight:600; color:#071133; }
+
+.role-badge { transition: transform .12s ease, box-shadow .12s ease; }
+.role-badge:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 6px 18px rgba(2,6,23,0.08); }
+
+/* Role-specific colors */
+.role-developer { background: linear-gradient(90deg,#a78bfa,#7c3aed); color:#fff; }
+.role-designer { background: linear-gradient(90deg,#fda4af,#ef4444); color:#fff; }
+.role-product-manager { background: linear-gradient(90deg,#99f6e4,#0ea5a4); color:#002b2b; }
+.role-manager { background: linear-gradient(90deg,#fef08a,#f59e0b); color:#2a1e00; }
+.role-employee { background: linear-gradient(90deg,#67e8f9,#06b6d4); color:#002b2b; }
+
+/* Accent border using CSS variable set on the row */
+.employee-table tbody tr.selected { box-shadow: inset 6px 0 0 var(--accent-color, #06b6d4); }
+
+/* Alternating soft stripes */
+.employee-table tbody tr:nth-child(odd) td { background: linear-gradient(180deg, rgba(250,252,255,0.6), rgba(255,255,255,0.0)); }
+
+/* Animated header */
+.employee-header { background: linear-gradient(90deg,#f0f9ff,#eef2ff); padding: 12px; border-radius: 10px; margin-bottom: 14px; }
+.header-meta strong { color: var(--accent-primary,#0891b2); }
+
+/* Buttons: more colorful */
+.btn-primary { background: linear-gradient(90deg,#06b6d4,#0891b2); box-shadow: 0 6px 18px rgba(3,105,118,0.12); }
+.btn-secondary { background: linear-gradient(90deg,#fff1f2,#fef3c7); }
+
+/* Small responsive tweaks */
+@media (max-width: 520px) {
+  .avatar { width:32px; height:32px; font-size:0.85rem; }
+  .employee-container { padding: 8px; }
+}
 .role-badge {
   display: inline-block;
   padding: 4px 8px;
